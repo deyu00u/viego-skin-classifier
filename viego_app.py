@@ -62,5 +62,4 @@ if uploaded_file is not None:
             st.write(f"Confidence Level: {confidence:.2%}")
             st.write("Target confirmed: The Ruined King.")
 
-st.divider()
-st.caption("System Status: Operational")
+
