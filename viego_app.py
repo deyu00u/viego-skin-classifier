@@ -62,7 +62,7 @@ left_spacer, center_col, right_spacer = st.columns([1, 2, 1])
 
 with center_col:
     st.markdown('<div class="upload-card">', unsafe_allow_html=True)
-    st.markdown("### Submit Your Artwork")
+    st.markdown("### Upload Viego Picture")
     uploaded_file = st.file_uploader("Drop Image Here", type=["jpg", "jpeg", "png"])
     st.markdown('</div>', unsafe_allow_html=True)
 
