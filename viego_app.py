@@ -25,7 +25,7 @@ def predict_champion(image_data, model, labels):
     
     return class_name, confidence_score
 
-st.title("League of Legends Champion Detector")
+st.title("Is This Viego?")
 st.write("Upload a champion splash art to check if it is Viego.")
 
 @st.cache_resource
