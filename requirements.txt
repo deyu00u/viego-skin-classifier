@@ -1,5 +1,5 @@
 streamlit==1.55.0
-tensorflow-cpu
+tensorflow-cpu>=2.16.0
 tf-keras
 Pillow
 numpy<2.0.0
