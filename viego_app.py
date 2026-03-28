@@ -6,7 +6,7 @@ import tensorflow as tf
 from PIL import Image, ImageOps
 import numpy as np
 
-st.set_page_config(page_title="Champion Detector", layout="centered")
+st.set_page_config(page_title="Viego Skin Detector", layout="centered")
 
 def predict_champion(image_data, model, labels):
     size = (224, 224)
@@ -25,8 +25,8 @@ def predict_champion(image_data, model, labels):
     
     return class_name, confidence_score
 
-st.title("Is This Viego?")
-st.write("Upload a champion splash art to check if it is Viego.")
+st.title("Is this Viego?")
+st.write("Upload a splash art to identify which Viego skin is present.")
 
 @st.cache_resource
 def load_my_model():
@@ -47,20 +47,20 @@ if uploaded_file is not None:
     image = Image.open(uploaded_file)
     st.image(image, caption="Uploaded Image", use_container_width=True)
     
-    with st.spinner("Analyzing image..."):
+    with st.spinner("Scanning the Black Mist..."):
         label, confidence = predict_champion(image, model, labels)
         
-        clean_label = label[2:].strip() if len(label) > 2 else label.strip()
+        clean_label = label.split(' ', 1)[1] if ' ' in label else label
         
         st.divider()
         
-        if "Viego" in clean_label and confidence > 0.70:
-            st.success(f"Identification: {clean_label}")
+        if "Other" in clean_label or confidence < 0.65:
+            st.error("Identification: Not Viego")
+            st.write("This soul does not belong to the Ruined King.")
+        else:
+            st.success(f"Skin Identified: {clean_label}")
             st.write(f"Confidence Level: {confidence:.2%}")
             st.write("Target confirmed: The Ruined King.")
-        else:
-            st.error("Identification: Not Viego")
-            st.write(f"Detected: {clean_label}")
-            st.write(f"Confidence Level: {confidence:.2%}")
 
-
+st.divider()
+st.caption("System Status: Operational")
