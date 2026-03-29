@@ -55,13 +55,16 @@ if uploaded_file is not None:
         
         st.divider()
         
-        if "Other" in clean_label or confidence < 0.65:
-            st.error("Identification: Not Viego")
-            st.write("This soul does not belong to the Ruined King.")
-        else:
+        # New Fixed Logic: Only succeed if "Viego" is in the name
+        if "viego" in clean_label.lower() and "not viego" not in clean_label.lower() and confidence > 0.65:
             st.success(f"Skin Identified: {clean_label}")
             st.write(f"Confidence Level: {confidence:.2%}")
             st.write("Target confirmed: The Ruined King.")
+        else:
+            st.error("Identification: Not Viego")
+            st.write(f"Detected: {clean_label}")
+            st.write(f"Confidence Level: {confidence:.2%}")
+            st.write("This soul does not belong to the Ruined King.")
 
 st.divider()
 st.caption("System Status: Operational")
