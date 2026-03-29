@@ -25,7 +25,7 @@ def predict_champion(image_data, model, labels):
     
     return class_name, confidence_score
 
-st.title("Is this Viego?")
+st.title("Is this Viego?(Put LoL Champion only)")
 st.write("Upload a splash art to identify which Viego skin is present.")
 
 @st.cache_resource
