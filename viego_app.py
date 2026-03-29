@@ -26,7 +26,7 @@ def predict_champion(image_data, model, labels):
     
     return class_name, confidence_score
 
-st.title("Viego Detector")
+st.title("Is This Viego?")
 st.write("Upload any picture to identify Viego.")
 
 @st.cache_resource
