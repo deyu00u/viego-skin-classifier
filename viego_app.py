@@ -6,7 +6,7 @@ import tensorflow as tf
 from PIL import Image, ImageOps
 import numpy as np
 
-st.set_page_config(page_title="Viego Skin Detector", layout="centered")
+st.set_page_config(page_title="Is This Viego?", layout="centered")
 
 def predict_champion(image_data, model, labels):
     size = (224, 224)
@@ -26,8 +26,8 @@ def predict_champion(image_data, model, labels):
     
     return class_name, confidence_score
 
-st.title("Viego Skin Detector")
-st.write("Upload a splash art to identify which Viego skin is present.")
+st.title("Viego Detector")
+st.write("Upload any picture to identify Viego.")
 
 @st.cache_resource
 def load_my_model():
