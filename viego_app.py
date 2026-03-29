@@ -10,7 +10,8 @@ st.set_page_config(page_title="Viego Skin Detector", layout="centered")
 
 def predict_champion(image_data, model, labels):
     size = (224, 224)
-    image = ImageOps.fit(image_data, size, Image.Resampling.LANCZOS)
+    image = image_data.convert("RGB")
+    image = ImageOps.fit(image, size, Image.Resampling.LANCZOS)
     
     image_array = np.asarray(image)
     normalized_image_array = (image_array.astype(np.float32) / 127.5) - 1
@@ -25,7 +26,7 @@ def predict_champion(image_data, model, labels):
     
     return class_name, confidence_score
 
-st.title("Is this Viego?(Put LoL Champion only)")
+st.title("Viego Skin Detector")
 st.write("Upload a splash art to identify which Viego skin is present.")
 
 @st.cache_resource
@@ -62,4 +63,5 @@ if uploaded_file is not None:
             st.write(f"Confidence Level: {confidence:.2%}")
             st.write("Target confirmed: The Ruined King.")
 
-
+st.divider()
+st.caption("System Status: Operational")
